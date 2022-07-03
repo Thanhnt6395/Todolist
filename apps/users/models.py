@@ -1,3 +1,4 @@
+import datetime
 import uuid
 
 from django.db import models
@@ -17,8 +18,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(default=timezone.now)
-    last_login = models.DateTimeField(null=True)
+    date_joined = models.DateField(default=datetime.date.today)
+    last_login = models.DateField(null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
